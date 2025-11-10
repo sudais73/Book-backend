@@ -13,6 +13,7 @@ connectDB()
 
 app.use('/api/auth',AuthRoutes )
 app.use('/api/books',bookRoutes)
+
 app.get("/", (req,res)=>{
 res.send('Nice to meet you!')
 })
