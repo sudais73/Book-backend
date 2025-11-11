@@ -6,9 +6,11 @@ import bookRoutes from './routes/bookRoutes.js'
 import cors from 'cors'
 
 const app= express()
-app.use(express.json()); 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(cors());
-const port = process.env.PORT || 3000
+const PORT= process.env.PORT || 3000
 connectDB()
 
 app.use('/api/auth',AuthRoutes )
@@ -18,6 +20,8 @@ app.get("/", (req,res)=>{
 res.send('Nice to meet you!')
 })
 
-app.listen(port, ()=>{
-console.log(`server is listining to port:${port}`)
-})
+app.listen(PORT, '0.0.0.0', () => {  // ⬅️ Use '0.0.0.0' not 'localhost'
+  console.log(`Server running on port ${PORT}`);
+  console.log(`Local: http://localhost:${PORT}`);
+  console.log(`Network: http://192.168.8.100:${PORT}`);
+});

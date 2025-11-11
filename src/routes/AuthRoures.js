@@ -10,6 +10,8 @@ const createToken = (id) => {
 router.post("/register", async (req, res) => {
     try {
         const { username, email, password } = req.body;
+        console.log("Received body:", req.body);
+
         // 
         if (!username || !email || !password) {
             return res.status(400).json({ success: false, msg: "All fields are required!" })
